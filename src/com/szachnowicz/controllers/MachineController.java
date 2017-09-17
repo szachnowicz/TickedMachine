@@ -54,7 +54,6 @@ public class MachineController {
     }
 
     public void showMenu() {
-        Arrays.asList(Ticked.values());
         displayCallBack.showMessage(getTranslation("mainMenu"));
         String choose = getConsolInput();
         if (choose.equals("1")) {
@@ -69,6 +68,7 @@ public class MachineController {
 
             changeLangueMenu();
         }
+        showMenu();
 
 
     }
@@ -99,10 +99,14 @@ public class MachineController {
             displayCallBack.showMessage(getTranslation("error"));
             showMenu();
             return;
-
         }
+        showMenu();
     }
 
+
+    /*
+
+    */
     private void askForQuantityAndDiscount(Ticked selected) {
         displayCallBack.showMessage(getTranslation("askForQuanity"));
         int quantity;
@@ -169,7 +173,6 @@ public class MachineController {
                 if (i > 1)
                     i--;
             }
-
             if (values[i].getCurrency().moreOrEqual(moneyToReturn)) {
                 displayCallBack.showMessage(getTranslation("coinReturned") + values[i].toString());
                 zlotych.addValue(values[i].getCurrency());
@@ -179,7 +182,6 @@ public class MachineController {
             }
         }
         displayCallBack.showMessage(getTranslation("returnedAmount") + zlotych.toString());
-
         showMenu();
 
     }
